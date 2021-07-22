@@ -1,21 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import React, { useState, useEffect } from "react";
+import {
+  useDimensions,
+  useDeviceOrientation,
+} from "@react-native-community/hooks";
+import {
+  StyleSheet,
+  Text,
+  Image,
+  SafeAreaView,
+  TouchableWithoutFeedback,
+  Platform,
+  StatusBar,
+  View,
+} from "react-native";
+import ViewImageScreen from "./app/Screens/DoneWithIt/ViewImageScreen";
+import MainScreen from "./app/Screens/DoneWithIt/MainScreen";
+import TodoScreen from "./app/Screens/Todos/TodoScreen";
+import Borders from "./app/Screens/styling/Borders";
+import Shadows from "./app/Screens/styling/Shadows";
+import Icons from "./app/Screens/styling/Icon";
+import Card from "./app/Screens/DoneWithIt/Components/Card";
+import ListingDetailsScreen from "./app/Screens/DoneWithIt/ListingDetailsScreen";
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const { landscape } = useDeviceOrientation();
+
+  return <ViewImageScreen />;
 }
 
 const styles = StyleSheet.create({
+  image: {
+    width: "100%",
+    height: "100%",
+  },
+  logo: {
+    position: "absolute",
+    justifyContent: "center",
+    alignItems: "flex-end",
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#f8f4f4",
+    padding: 20,
+    paddingTop: 100,
   },
 });
