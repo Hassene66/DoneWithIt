@@ -26,10 +26,32 @@ import Icon from "./app/Screens/DoneWithIt/Components/Icon";
 import ListItem from "./app/Screens/DoneWithIt/Components/ListItem";
 import Screen from "./app/Screens/DoneWithIt/Components/Screen";
 import AccountScreen from "./app/Screens/DoneWithIt/AccountScreen";
+import ListingsScreen from "./app/Screens/DoneWithIt/ListingsScreen";
+import TextInputComponent from "./app/Screens/DoneWithIt/TextInputComponent";
+import AppTextInput from "./app/Screens/DoneWithIt/Components/AppTextInput";
+import AppPicker from "./app/Screens/DoneWithIt/Components/AppPicker";
 export default function App() {
   const { landscape } = useDeviceOrientation();
-
-  return <AccountScreen />;
+  const items = [
+    {
+      id: 1,
+      label: "forniture",
+    },
+    {
+      id: 2,
+      label: "accessories",
+    },
+  ];
+  const [category, setCategory] = useState(items[0]);
+  return (
+    <AppPicker
+      icon="apps"
+      placeholder="Category"
+      items={items}
+      selectItem={category}
+      onSelectItem={(item) => setCategory(item)}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
