@@ -23,35 +23,18 @@ import Card from "./app/Screens/DoneWithIt/Components/Card";
 import ListingDetailsScreen from "./app/Screens/DoneWithIt/ListingDetailsScreen";
 import MessagesScreen from "./app/Screens/DoneWithIt/MessagesScreen";
 import Icon from "./app/Screens/DoneWithIt/Components/Icon";
-import ListItem from "./app/Screens/DoneWithIt/Components/ListItem";
+import ListItem from "./app/Screens/DoneWithIt/Components/listes/ListItem";
 import Screen from "./app/Screens/DoneWithIt/Components/Screen";
 import AccountScreen from "./app/Screens/DoneWithIt/AccountScreen";
 import ListingsScreen from "./app/Screens/DoneWithIt/ListingsScreen";
 import TextInputComponent from "./app/Screens/DoneWithIt/TextInputComponent";
-import AppTextInput from "./app/Screens/DoneWithIt/Components/AppTextInput";
+import AppTextInput from "./app/Screens/DoneWithIt/Components/TextInput";
 import AppPicker from "./app/Screens/DoneWithIt/Components/AppPicker";
+import LoginScreen from "./app/Screens/DoneWithIt/LoginScreen";
+import ListingEditScreen from "./app/Screens/DoneWithIt/ListingEditScreen";
+import RegisterScreen from "./app/Screens/DoneWithIt/RegisterScreen";
 export default function App() {
-  const { landscape } = useDeviceOrientation();
-  const items = [
-    {
-      id: 1,
-      label: "forniture",
-    },
-    {
-      id: 2,
-      label: "accessories",
-    },
-  ];
-  const [category, setCategory] = useState(items[0]);
-  return (
-    <AppPicker
-      icon="apps"
-      placeholder="Category"
-      items={items}
-      selectItem={category}
-      onSelectItem={(item) => setCategory(item)}
-    />
-  );
+  return <ListingEditScreen />;
 }
 
 const styles = StyleSheet.create({

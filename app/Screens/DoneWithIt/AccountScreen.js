@@ -1,10 +1,9 @@
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import ListItem from "./Components/ListItem";
+import { ListItem, ListItemSeparator } from "./Components/listes";
 import Screen from "./Components/Screen";
 import colors from "../config/color";
 import Icon from "./Components/Icon";
-import ListItemSeparator from "./Components/ListItemSeparator";
 const AccountScreen = () => {
   const mutipleItems = [
     {

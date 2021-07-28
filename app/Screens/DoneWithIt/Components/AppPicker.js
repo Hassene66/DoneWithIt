@@ -4,7 +4,6 @@ import {
   FlatList,
   Modal,
   StyleSheet,
-  TextInput,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
@@ -12,14 +11,22 @@ import defaultStyles from "../../config/styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Screen from "./Screen";
 import AppText from "./AppText";
-import AppButton from "./AppButton";
 import PickerItem from "./PickerItem";
-const AppPicker = ({ items, onSelectItem, selectItem, placeholder, icon }) => {
+const AppPicker = ({
+  items,
+  onSelectItem,
+  numberOfColumns = 1,
+  selectItem,
+  placeholder,
+  PickerItemComponent = PickerItem,
+  icon,
+  width = "100%",
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   return (
-    <Screen>
+    <>
       <TouchableWithoutFeedback onPress={() => setIsVisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -28,9 +35,11 @@ const AppPicker = ({ items, onSelectItem, selectItem, placeholder, icon }) => {
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>
-            {selectItem ? selectItem.label : placeholder}
-          </AppText>
+          {selectItem ? (
+            <AppText style={styles.text}>{selectItem.label}</AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
+          )}
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -42,20 +51,21 @@ const AppPicker = ({ items, onSelectItem, selectItem, placeholder, icon }) => {
         <View>
           <FlatList
             data={items}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item.value.toString()}
+            numColumns={numberOfColumns}
             renderItem={({ item }) => (
-              <PickerItem
+              <PickerItemComponent
+                item={item}
                 onPress={() => {
                   setIsVisible(false), onSelectItem(item);
                 }}
-                label={item.label}
               />
             )}
           />
           <Button title="close" onPress={() => setIsVisible(false)} />
         </View>
       </Modal>
-    </Screen>
+    </>
   );
 };
 
@@ -67,10 +77,10 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flexDirection: "row",
     alignItems: "center",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
   },
   icon: { marginRight: 10 },
   text: { flex: 1 },
+  placeholder: { color: defaultStyles.colors.medium, flex: 1 },
 });
