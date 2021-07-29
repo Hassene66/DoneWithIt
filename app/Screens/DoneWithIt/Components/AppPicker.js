@@ -16,7 +16,7 @@ const AppPicker = ({
   items,
   onSelectItem,
   numberOfColumns = 1,
-  selectItem,
+  selectedItem,
   placeholder,
   PickerItemComponent = PickerItem,
   icon,
@@ -35,8 +35,8 @@ const AppPicker = ({
               style={styles.icon}
             />
           )}
-          {selectItem ? (
-            <AppText style={styles.text}>{selectItem.label}</AppText>
+          {selectedItem ? (
+            <AppText style={styles.text}>{selectedItem.label}</AppText>
           ) : (
             <AppText style={styles.placeholder}>{placeholder}</AppText>
           )}
@@ -57,7 +57,7 @@ const AppPicker = ({
               <PickerItemComponent
                 item={item}
                 onPress={() => {
-                  setIsVisible(false), onSelectItem(item);
+                  onSelectItem(item), setIsVisible(false);
                 }}
               />
             )}

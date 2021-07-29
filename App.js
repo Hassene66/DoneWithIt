@@ -12,7 +12,11 @@ import {
   Platform,
   StatusBar,
   View,
+  Button,
+  TouchableOpacity,
 } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+// import * as Permissions from "expo-permissons";
 import ViewImageScreen from "./app/Screens/DoneWithIt/ViewImageScreen";
 import MainScreen from "./app/Screens/DoneWithIt/MainScreen";
 import TodoScreen from "./app/Screens/Todos/TodoScreen";
@@ -33,6 +37,8 @@ import AppPicker from "./app/Screens/DoneWithIt/Components/AppPicker";
 import LoginScreen from "./app/Screens/DoneWithIt/LoginScreen";
 import ListingEditScreen from "./app/Screens/DoneWithIt/ListingEditScreen";
 import RegisterScreen from "./app/Screens/DoneWithIt/RegisterScreen";
+import ImageInputList from "./app/Screens/DoneWithIt/Components/ImageInputList";
+
 export default function App() {
   return <ListingEditScreen />;
 }

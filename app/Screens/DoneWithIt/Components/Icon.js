@@ -7,7 +7,6 @@ const Icon = ({
   backgroundColor = "#000",
   size = 40,
 }) => {
-  console.log(backgroundColor);
   return (
     <View
       style={{
