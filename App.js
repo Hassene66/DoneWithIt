@@ -3,6 +3,10 @@ import {
   useDimensions,
   useDeviceOrientation,
 } from "@react-native-community/hooks";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   StyleSheet,
   Text,
@@ -18,7 +22,7 @@ import {
 import * as ImagePicker from "expo-image-picker";
 // import * as Permissions from "expo-permissons";
 import ViewImageScreen from "./app/Screens/DoneWithIt/ViewImageScreen";
-import MainScreen from "./app/Screens/DoneWithIt/MainScreen";
+import MainScreen from "./app/Screens/DoneWithIt/WelcomeScreen";
 import TodoScreen from "./app/Screens/Todos/TodoScreen";
 import Borders from "./app/Screens/styling/Borders";
 import Shadows from "./app/Screens/styling/Shadows";
@@ -38,9 +42,16 @@ import LoginScreen from "./app/Screens/DoneWithIt/LoginScreen";
 import ListingEditScreen from "./app/Screens/DoneWithIt/ListingEditScreen";
 import RegisterScreen from "./app/Screens/DoneWithIt/RegisterScreen";
 import ImageInputList from "./app/Screens/DoneWithIt/Components/ImageInputList";
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
+import AppNavigator from "./app/navigation/AppNavigator";
 
 export default function App() {
-  return <ListingEditScreen />;
+  return (
+    <NavigationContainer theme={navigationTheme}>
+      <AppNavigator />
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({
